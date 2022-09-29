@@ -1,0 +1,354 @@
+{
+  "schema_version": 3,
+  "config_version": 99,
+  "conf_file_url": "https://fa-apps-us.s3-us-west-1.amazonaws.com/mina_temp/configurationV3.json",
+  "auto_conf_polling": true,
+  "navigation_bar": {
+    "show_navigation_bar": true,
+    "title_type": "image",
+    "title_position": "center",
+    "image": {
+      "type": "local",
+      "filename": "thclogo.png",
+      "url": "https://followanalytics.com/wp-content/themes/new/assets/favicon/favicon-32x32.png"
+    }
+  },
+  "external_links": {
+    "custom": [
+      {
+        "expression": "whats-new", "match_type": "substring", "presentation_mode": "modal_webview"
+      },
+      {
+        "expression": "mouth-off", "match_type": "substring", "presentation_mode": "outside_of_app"
+      },
+      {
+        "expression": "best-sellers", "match_type": "substring", "presentation_mode": "inapp_browser"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "FollowAnalytics",
+      "image": {
+        "type": "local",
+        "filename": "buy"
+      },
+      "url": "https://www.elfcosmetics.com/account",
+      "type": "url",
+      "loading_percentage_before_show": 60,
+      "allow_scroll_while_loading": false,
+      "show_transition_loader": true,
+      "prevent_zooming": true,
+      "pull_to_refresh": true,
+      "navigation_bar": {
+        "show_navigation_bar": true,
+        "title_type": "section_title",
+        "title_position": "center"
+      },
+      "navigation_bar_buttons": {
+        "left_buttons": [
+          {
+            "type": "back",
+            "icon": {
+              "type": "local",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/back.png",
+              "filename": "buy"
+            }
+          },
+          {
+            "type": "menu",
+            "menu_type": "js_selector",
+            "js_selector": ".navbar-toggler",
+            "hide_button_when_not_available": true,
+            "icon": {
+              "type": "local",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/js-selector.png",
+              "filename": "buy"
+            }
+          }
+        ],
+        "right_buttons": [
+          {
+            "type": "toggle",
+            "toggle_type": "js_selector",
+            "js_selector": "#searchToggle",
+            "hide_button_when_not_available": true,
+            "icon": {
+              "type": "local",
+              "filename": "buy"
+            },
+            "active_icon": {
+              "type": "local",
+              "filename": "buy.png"
+            }
+          },
+          {
+            "type": "cart",
+            "show_0": true,
+            "counter_selector": "span.mini-cart-qty",
+            "counter_badge_type": "right",
+            "tap_action_type": "url",
+            "url": "https://www.elfcosmetics.com/shopping-bag",
+            "icon": {
+              "type": "local",
+              "filename": "buy.png"
+            },
+            "active_icon": {
+              "type": "local",
+              "filename": "buy"
+            }
+          },
+          {
+            "type": "barcode_scanner",
+            "url_pattern": "https://duckduckgo.com?q=%@",
+            "icon": {
+              "type": "local",
+              "filename": "buy.png"
+            }
+          },
+          {
+            "type": "menu",
+            "menu_type": "hamburger",
+            "icon": {
+              "type": "local",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/js-selector.png",
+              "filename": "buy"
+            },
+            "menu_items": [
+              {
+                "title": "First link",
+                "link": "https://somesite.com/subpage1",
+                "image": {
+                  "type": "local",
+                  "filename": "buy"
+                }
+              },
+              {
+                "title": "2nd link",
+                "link": "https://somesite.com/subpage2",
+                "image": {
+                  "type": "local",
+                  "filename": "buy",
+                  "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/cart.png"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "web_content": {
+        "shopping_cart_counter_selector": "[aria-label='Shopping Bag'] .minicart-quantity",
+        "selectors_to_remove": [
+          {
+            "label": "remove heart from top bar",
+            "selector_to_remove": ".header-wish-list"
+          },
+          {
+            "label": "remove LIPS from hamburger menu in site",
+            "selector_to_remove": ".menu-category.level-1 > li",
+            "sub_selector_to_check": "a",
+            "innerHTML_to_check": "Lips"
+          }
+        ],
+        "scripts": [
+          {
+            "label": "make search background color blink",
+            "script": "var f = document.querySelector('form input'); if (f.style.backgroundColor == 'red') { f.style.backgroundColor = 'blue' } else { f.style.backgroundColor = 'red' }",
+            "execution": "continuous"
+          },
+          {
+            "label": "insert hello at top of page (might appear at bottom)",
+            "script": "var p = document.createElement('p'); p.innerHTML = 'hello'; document.body.appendChild(p);",
+            "execution": "document_start"
+          },
+          {
+            "label": "insert bye at bottom of page",
+            "script": "var p = document.createElement('p'); p.innerHTML = 'bye'; document.body.appendChild(p);",
+            "execution": "document_end"
+          }
+        ],
+        "css": [
+          {
+            "label": "Change some backgrounds to yellow",
+            "selector": "body, div",
+            "properties": "background-color: green !important;"
+          }
+        ]
+      },
+      "features": [
+      ],
+      "handles_urls": []
+    },
+    {
+      "title": "Cart",
+      "image": {
+        "type": "local",
+        "filename": "buy"
+      },
+      "active_image": {
+        "type": "local",
+        "filename": "buy.png"
+      },
+      "url": "https://www.elfcosmetics.com/shopping-bag",
+      "type": "url",
+      "loading_percentage_before_show": 60,
+      "allow_scroll_while_loading": false,
+      "show_transition_loader": true,
+      "external_links": {},
+      "navigation_bar": {
+        "show_navigation_bar": false
+      },
+      "prevent_zooming": false,
+      "pull_to_refresh": true,
+      "navigation_bar_buttons": {
+        "left_buttons": [
+          {
+            "type": "back",
+            "icon": {
+              "type": "local",
+              "filename": "buy"
+            }
+          },
+          {
+            "type": "menu",
+            "menu_type": "js_selector",
+            "js_selector": "header .menu-toggle",
+            "hide_button_when_not_available": true,
+            "icon": {
+              "type": "local",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/js-selector.png",
+              "filename": "buy"
+            }
+          }
+        ],
+        "right_buttons": [
+          {
+            "type": "cart",
+            "show_0": false,
+            "counter_selector": "span.mini-cart-qty",
+            "counter_badge_type": "right",
+            "counter_badge_color": "#FFFFFF",
+            "tap_action_type": "url",
+            "url": "https://site.com/cart",
+            "script": "document.querySelector('.cart-modal-toggler').click();",
+            "icon": {
+              "type": "local",
+              "filename": "buy.png",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/cart.png"
+            }
+          },
+          {
+            "type": "toggle",
+            "toggle_type": "js_selector",
+            "js_selector": "#searchToggle",
+            "hide_button_when_not_available": true,
+            "icon": {
+              "type": "local",
+              "filename": "buy"
+            }
+          },
+          {
+            "type": "shortcut",
+            "url": "https://site.com/account",
+            "icon": { "type": "local", "filename": "buy" }
+          },
+          {
+            "type": "voice_search",
+            "language": "fr_FR",
+            "url_pattern": "https://google.com?q=%@",
+            "icon": {
+              "type": "local",
+              "filename": "buy",
+              "url": "https://fa-apps-us.s3.amazonaws.com/mina_temp/cart.png"
+            }
+          }
+        ]
+      },
+      "handles_urls": [],
+      "web_content": {
+        "selectors_to_remove": [
+          {
+            "label": "Baby entry in main menu",
+            "selector_to_remove": ".nav-item",
+            "sub_selector_to_check": "span",
+            "innerHTML_to_check": "Baby"
+          }
+        ],
+        "scripts": [
+          {
+            "label": "Prevent Google Analytics",
+            "script": "window['ga-disable-UA-25155717-1'] = true;",
+            "execution": "document_start"
+          }
+        ],
+        "css": [
+          {
+            "label": "Reduce padding at top of page",
+            "selector": "body .container",
+            "properties": "padding-top: 0; margin-top: 0;"
+          }
+        ]
+      },
+      "features": [
+        {
+          "type": "cart",
+          "show_0": true
+        },
+        {
+          "type": "voice_search",
+          "position": "bottom_right",
+          "icon": { "type": "local", "filename": "buy" },
+          "language": "fr_FR",
+          "url_pattern": "https://google.com?q=%@"
+        },
+        {
+          "type": "barcode_scanner",
+          "position": "bottom_left",
+          "url_pattern": "https://duckduckgo.com/?q=%@"
+        }
+      ]
+    }
+  ],
+  "login": {
+    "enable_form_detection": true,
+    "pre_fill_username": true,
+    "enable_biometrics": true,
+    "persistent_login": false,
+    "logged_in_state_check": {
+      "check_type": "matcher",
+      "login_success_check": {
+        "expression": "/account",
+        "match_type": "substring"
+      },
+      "logout_check": {
+        "expression": "/logout",
+        "match_type": "substring"
+      }
+    },
+    "target_logged_in_url": "https://www.elfcosmetics.com/account",
+    "use_default_credentials": false,
+    "default_username": "",
+    "default_password": "",
+    "form_selector": "",
+    "username_field_selector": "",
+    "password_field_selector": "",
+    "submit_button_selector": "button[type='submit']"
+  },
+  "style": {
+    "global_background_color": "#FFFFFF",
+    "tab_bar_background_color": "#FFFFFF",
+    "tab_bar_selected_color": "#003B82",
+    "tab_bar_unselected_color": "#989898",
+    "nav_bar_background_color": "#f2f2f2",
+    "nav_bar_title_color": "#003B82",
+    "nav_bar_button_color": "#003B82",
+    "tab_bar_translucent": false,
+    "nav_bar_translucent": false,
+    "nav_bar_button_width": 36,
+    "nav_bar_button_height": 36,
+    "nav_bar_button_spacing": 8,
+    "nav_bar_side_margin": 8,
+    "nav_bar_cart_button_text_color": "#0000FF",
+    "nav_bar_cart_button_text_top_offset": 0
+  }
+}
