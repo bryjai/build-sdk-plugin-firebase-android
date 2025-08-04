@@ -14,9 +14,6 @@ dependencyResolutionManagement {
         maven {
             url 'https://nexus.bryj.ai/repository/releases/'
         }
-        maven {
-            url "https://nexus.bryj.ai/#browse/browse:releases:ai/bryj/build/build-sdk"
-        }
     }
 }
 rootProject.name = "PluginTrackingGrow"
