@@ -15,7 +15,7 @@ dependencyResolutionManagement {
             url 'https://nexus.bryj.ai/repository/releases/'
         }
         maven {
-            url "https://nexus.follow-apps.com/nexus/content/repositories/android-build-sdk/"
+            url "https://nexus.bryj.ai/#browse/browse:releases:ai/bryj/build/build-sdk"
         }
     }
 }
