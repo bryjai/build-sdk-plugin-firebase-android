@@ -1,6 +1,7 @@
 package ai.bryj.build.plugin.firebase.android
 
 import ai.bryj.Grow
+import ai.bryj.build.plugin.android.BuildConfig
 import android.webkit.WebView
 import com.follow.mobile.framework.FollowAnalyticsApplication
 import timber.log.Timber
