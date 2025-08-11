@@ -10,7 +10,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    apiVersion = "2"
+    apiVersion = "1"
 }
 
 def getBaseVersion() {
