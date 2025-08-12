@@ -8,3 +8,71 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    apiVersion = "1"
+}
+
+def getBaseVersion() {
+    def base_version = new File("$rootDir/VERSION").text.trim()
+    if (!(base_version ==~ /([1-9][0-9]*|0)\.([1-9][0-9]*|0)\.([1-9][0-9]*|0)(\.([1-9][0-9]*|0))?/))
+        throw new Exception('The base version (' + base_version + ') does not have the correct format.')
+    return base_version
+}
+
+static def getNexusRepository() {
+    switch (getChannel()) {
+        case 'stable':
+            return 'releases'
+        case 'beta':
+            return 'beta'
+        default:
+            return 'none'
+    }
+}
+
+static def getVersionSuffix() {
+    switch (getChannel()) {
+        case 'stable':
+            return ''
+        case 'beta':
+            return '-beta-' + getBuildNumber()
+        default:
+            return '-dev-' + getBuildNumber()
+    }
+}
+
+static def getCommitCount() {
+    def gitCommand = 'git rev-list --count HEAD'
+    def count =  gitCommand.execute().text.trim()
+    println "Number of commits: $count"
+    return count as Integer
+}
+
+static def getSystemBuildNumber() {
+    return System.getenv()['BUILD_NUMBER'] as Integer
+}
+
+static def getBuildNumber() {
+    return getSystemBuildNumber() ?: getCommitCount()
+}
+
+static def getChannel() {
+    return System.getenv()['CHANNEL']
+}
+
+static def getNexusUsername(){
+    def username = System.getenv()['NEXUS_USERNAME'];
+    if(username == null){
+        println 'No environment system variable found for nexus username.'
+    }
+    return username
+}
+
+static def getNexusPassword() {
+    def password = System.getenv()['NEXUS_PASSWORD'];
+    if (password == null) {
+        println 'No environment system variable found for nexus password.'
+    }
+    return password
+}

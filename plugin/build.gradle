@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
+
+group = 'ai.bryj.build'
+version = rootProject.getBaseVersion() + getVersionSuffix()
 
 android {
     compileSdk 35
@@ -9,9 +13,11 @@ android {
     defaultConfig {
         minSdk 23
         targetSdk 35
-
+        buildFeatures.buildConfig true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField("String", "PLUGIN_VERSION", "\"${version}\"")
+        buildConfigField("String", "API_VERSION", "\"${rootProject.ext.apiVersion}\"")
     }
 
     buildTypes {
@@ -44,4 +50,25 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'org.mockito.kotlin:mockito-kotlin:4.0.0'
     androidTestImplementation 'org.mockito:mockito-android:4.1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                artifactId = "plugin-firebase"
+                from components.release
+            }
+        }
+        repositories {
+            maven {
+                name = "external"
+                url = "https://nexus.bryj.ai/repository/" + rootProject.getNexusRepository()
+                credentials {
+                    username = rootProject.getNexusUsername()
+                    password = rootProject.getNexusPassword()
+                }
+            }
+        }
+    }
 }
