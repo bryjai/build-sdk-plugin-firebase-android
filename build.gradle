@@ -36,9 +36,9 @@ static def getVersionSuffix() {
         case 'stable':
             return ''
         case 'beta':
-            return '-beta-' + getBuildNumber()
+            return '-beta.' + getBuildNumber()
         default:
-            return '-dev-' + getBuildNumber()
+            return '-dev.' + getBuildNumber()
     }
 }
 
