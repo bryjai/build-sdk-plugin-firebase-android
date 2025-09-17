@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+version = rootProject.getBaseVersion() + getVersionSuffix()
+
 android {
     compileSdk 35
 
@@ -10,7 +12,7 @@ android {
         applicationId "ai.bryj.build.plugin.firebase.android"
         minSdk 23
         targetSdk 35
-        versionCode 2
+        versionCode 3
         versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
